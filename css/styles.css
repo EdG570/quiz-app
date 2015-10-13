@@ -6,7 +6,7 @@ body {
   font-family: 'Raleway', sans-serif;
   background-color: #000000;
   font-size: 16px;
-  padding: 1em 0 3em 0;
+  padding: 1em 0 15em 0; /*---When quiz questions display bottom padding to 3em */
   line-height: 1.4;
 }
 
@@ -16,8 +16,7 @@ body {
   color: #F5A623;
   font-size: 4em;
   font-weight: 300;
-  margin-bottom: 1em;
-  display: none;
+  margin-bottom: 2em;
 }
 
 .button {
@@ -43,13 +42,11 @@ body {
   font-weight: 400;
   font-size: 1.8em;
   margin-top: 0;
-  display: none;
 }
 
 #start-btn {
   background-color: #F89C04;
   color: #ffffff;
-  display: none;
 } 
 
 /*------------Quiz Container Quiz Questions ----*/
@@ -59,6 +56,7 @@ body {
   color: #F89C04;
   padding: 0.5em 3em;
   margin-top: 1em;
+  display: none;
 }
 
 #quiz-container h3 {
@@ -72,6 +70,7 @@ body {
   margin-bottom: 1.5em;
   margin-top: 0;
   line-height: 1.5;
+  display: none;
 }
 
 #quiz-container > h3 > #question-color {
@@ -87,6 +86,7 @@ body {
   color: #fff;
   margin-bottom: 1em;
   width: 15em;
+  display: none;
 }
 
 #header > h2 {
@@ -96,6 +96,7 @@ body {
   font-size: 3em;
   font-weight: 300;
   margin-bottom: 0.5em;
+  display: none;
 }
 
 #header > .progress-icons {
@@ -103,6 +104,7 @@ body {
   width: 32em;
   margin: 0 auto 3em auto;
   padding-left: 0;
+  display: none;
 }
 
 #header > .progress-icons > li {
