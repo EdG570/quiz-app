@@ -26,6 +26,10 @@ body {
   font-size: 1.2em;
 }
 
+button:focus {
+  outline:0;
+}
+
 /*---------Quiz Container Initial------------*/
 
 #quiz-container {
@@ -115,3 +119,9 @@ body {
 #header > .progress-icons > li:last-child {
   margin-right: 0;
 }
+
+form {
+  margin-top: 1.5em;
+}
+
+
