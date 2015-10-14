@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+var userAnswer = $('.answer-btn').text();
 
 /*--Hides and shows elements for transition from landing content to quiz start content after clicking get started button--*/
 $('#start-btn').on('click', function(){
@@ -10,8 +11,8 @@ $('#start-btn').on('click', function(){
 
   /*------Elements that are displayed-----*/
   $(this).siblings('h3').show();
-  $(this).siblings('.answer-btn').show();
-  $(this).siblings('form').children().show();
+  $(this).siblings('ul').show();
+  $(this).prev().show();
   $(this).parent().prev().children('h2').show();
   $(this).parent().prev().children('.progress-icons').show();
 
@@ -38,9 +39,14 @@ var questionOne = new Question('What is the name of the character that Sigourney
 
 $('.answer-btn').on('click', function(){
   $(this).css('background-color', '#F5A623');
-  $(this).siblings('.answer-btn').css('background-color', '#777777');
+  $(this).parent().siblings().children().css('background-color', '#777777');
 });
 
-$('.')
+$('form').submit(function(event){
+  event.preventDefault();
+
+
+
+});
 
 });

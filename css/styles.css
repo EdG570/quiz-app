@@ -81,6 +81,12 @@ button:focus {
   color: #F89C04;
 }
 
+#quiz-container > ul > li {
+  width: 15em;
+  margin-bottom: 1em;
+  margin-left: -1.4em;
+}
+
 .answer-btn {
   padding: 0.5em 3em;
   border: none;
@@ -88,8 +94,11 @@ button:focus {
   font-size: 1.2em;
   background-color: #F89C04;
   color: #fff;
-  margin-bottom: 1em;
   width: 15em;
+}
+
+#quiz-container > ul {
+  list-style: none;
   display: none;
 }
 
@@ -120,8 +129,10 @@ button:focus {
   margin-right: 0;
 }
 
-form {
+ul > #submit-btn {
   margin-top: 1.5em;
 }
+
+
 
 
