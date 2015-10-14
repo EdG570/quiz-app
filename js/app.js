@@ -27,9 +27,10 @@ $('#start-btn').on('click', function(){
 
   /*------Adds first question answers to quiz-------*/
   for(i = 0; i <= 3; i++){
-    $(this).prev().prev().append('<li><input type="checkbox" class="answer-btn button" id="answer-1" value="' + questions[0].answers[i] + '" hidden><label for="answer-1">' + questions[0].answers[i] + '</label></input></li>');
+    $(this).prev().find('ul').append('<li><input type="checkbox" class="answer-btn button" id="answer-1" value="' + questions[0].answers[i] + '" hidden><label for="answer-1">' + questions[0].answers[i] + '</label></input></li>');
+    $('ul').trigger('create');
   }
-
+    
 });
 
  var hot = "toot";
@@ -52,7 +53,10 @@ $('form').submit(function(e){
 
   for(i = 0; i <= 3; i++){
     $(this).prev().append('<li><input type="checkbox" class="answer-btn button" id="answer-1" value="' + questions[counter].answers[i] + '" hidden><label for="answer-1">' + questions[counter].answers[i] + '</label></input></li>');
+    $(this).find('ul').listview('refresh');
   }
+
+
 
   return counter++;
 });
