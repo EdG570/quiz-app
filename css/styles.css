@@ -33,6 +33,10 @@ button:focus {
   outline:0;
 }
 
+input[type:"submit"]:focus {
+  outline: 0 !important;
+}
+
 /*---------Quiz Container Initial------------*/
 
 #quiz-container {
@@ -58,12 +62,12 @@ button:focus {
 
 /*------------Quiz Container Quiz Questions ----*/
 
-#submit-btn {
+input[type="submit"] {
   background-color: #ffffff;
   color: #F89C04;
   padding: 0.5em 3em;
   margin-top: 1em;
-  display: none;
+  margin-top: 1.5em;
 }
 
 #quiz-container h3 {
@@ -84,13 +88,13 @@ button:focus {
   color: #F89C04;
 }
 
-#quiz-container > ul > li {
+#quiz-container > form > ul > li {
   width: 15em;
   margin-bottom: 1em;
   margin-left: -1.4em;
 }
 
-.answer-btn {
+form input ~ label {
   padding: 0.5em 3em;
   border: none;
   border-radius: 5px;
@@ -100,9 +104,22 @@ button:focus {
   width: 15em;
 }
 
-#quiz-container > ul {
+form input:checked ~ label {
+  padding: 0.5em 3em;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  background-color: yellow;
+  color: #fff;
+  width: 15em;
+}
+
+#quiz-container > form {
+   display: none;
+}
+
+#quiz-container > form > ul {
   list-style: none;
-  display: none;
 }
 
 #header > h2 {
@@ -132,9 +149,9 @@ button:focus {
   margin-right: 0;
 }
 
-ul > #submit-btn {
-  margin-top: 1.5em;
-}
+
+
+
 
 
 
