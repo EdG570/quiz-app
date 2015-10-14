@@ -18,7 +18,7 @@ var questionOne = new Question('Béla Lugosi was a Hungarian/American actor best
 
 console.log(questionOne.sayQuestionAnswers());
 
-var questionTwo = new Question('Movies also teach us that if your son warns of "redrum" you better distance yourself from your husband pronto. But in "The Shining" all the husband is worried about is what? ',
+var questionTwo = new Question('Movies also teach us that if your son warns of "redrum" you better distance yourself from your spouse pronto. But in "The Shining" all the husband is worried about is what? ',
  ['Playing too hard', 'Becoming a murderer', 'Working too hard', 'Being murdered'], 'Working too hard', '"All work and no play makes Jack a dull boy" -- or, rather, a homicidal boy in Stanley Kubricks eerie 1980 adaptation of Stephen Kings horror novel');
 
 console.log(questionTwo.sayQuestionAnswers());
@@ -34,11 +34,11 @@ var questionFour = new Question('If you are looking for a job on Crystal Lake wh
 console.log(questionFour.sayQuestionAnswers());
 
 var questionFive = new Question('If you are a teenager living on Elm Street, what should you never do?', 
-  ['Say his name seven times', 'Play with dolls', 'Go to the prom', 'Go to sleep'], 'Go to sleep', 'We all know from "Nightmare on Elm Street" that your dreams can get you killed by Freddy Krueger. Written by Craven, a former English teacher, the films premise is the question of where the line between dreams and reality lies. The villain, Freddy Krueger, exists in the "dream world" and yet can kill in the "real world".');
+  ['Go shopping', 'Play with dolls', 'Go to the prom', 'Go to sleep'], 'Go to sleep', 'We all know from "Nightmare on Elm Street" that your dreams can get you killed by Freddy Krueger. Written by Craven, a former English teacher, the films premise is the question of where the line between dreams and reality lies. The villain, Freddy Krueger, exists in the "dream world" and yet can kill in the "real world".');
 
 console.log(questionFive.sayQuestionAnswers());
 
-
+var questions = [questionOne, questionTwo, questionThree, questionFour, questionFive];
 
 
 
