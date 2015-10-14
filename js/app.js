@@ -48,12 +48,12 @@ $('form').submit(function(e){
   $('.output').text(answer);
 
   $(this).prev().children().remove();
-  $(this).find('ul').children().remove();
+  $(this).find('ul').find('li').remove();
   $(this).prev().append('<span id="question-color">Question ' + (counter + 1) + ':</span><span> ' + questions[counter].question + '</span');
 
   for(i = 0; i <= 3; i++){
-    $(this).prev().append('<li><input type="checkbox" class="answer-btn button" id="answer-1" value="' + questions[counter].answers[i] + '" hidden><label for="answer-1">' + questions[counter].answers[i] + '</label></input></li>');
-    $(this).find('ul').listview('refresh');
+    $(this).find('ul').append('<li><input type="checkbox" class="answer-btn button" id="answer-1" value="' + questions[counter].answers[i] + '" hidden><label for="answer-1">' + questions[counter].answers[i] + '</label></input></li>');
+    $('ul').trigger('create');
   }
 
 
