@@ -33,13 +33,12 @@ $('#start-btn').on('click', function(){
     
 });
 
- var hot = "toot";
-
+ 
+/*-------On submit answer is stored in array and current answers/question
+          are removed and next question/answers are added----------*/
 $('form').submit(function(e){
   e.preventDefault();
   var answer = [];
-
-  console.log(hot);
 
   $('input[type="checkbox"]:checked').each(function() {
     answer.push($(this).val());
@@ -56,7 +55,7 @@ $('form').submit(function(e){
     $('ul').trigger('create');
   }
 
-
+  audio.door();
 
   return counter++;
 });
