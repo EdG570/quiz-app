@@ -22,13 +22,8 @@ $('#start-btn').on('click', function(){
     $('#header').children('.progress-icons').show();
     $('.main').css('padding-bottom', '3em');
 
-    //Adds first quiz question
-    $('#quiz-container').children('h3').append('<span id="remove"> ' + questions[0].question + '</span');
-    
-    //Adds first set of answer choices
-    for(i = 0; i <= 3; i++){
-    $('#quiz-container').children('ul').append('<li><button class="answer-btn">' + questions[0].answers[i] + '</button></li>');
-    }
+    addQuestion();
+    addAnswers();
     
   //changeImage();
 
@@ -43,12 +38,8 @@ $('#answer-list').on('click', 'button', function(){
     console.log(userAnswer);
     correctAnswer = questions[counter].correctAnswer;
     checkAnswer();
-    return userAnswer;
-
-    
 });
 
- 
 /*-------Checks if quiz is finished, removes previous question, adds next question on submit----------*/
 $('#quiz-container').on('click','#submit-btn', function(event){
     event.preventDefault();
@@ -59,12 +50,9 @@ $('#quiz-container').on('click','#submit-btn', function(event){
    else{
       $('#answer-list').children().remove();
       $('h3').children().remove();
-      $('h3').append('<span id="question-color">Question ' + (counter + 1) + ':</span><span> ' + questions[counter].question + '</span');
-
-      for(i = 0; i <= 3; i++){
-      $('#answer-list').append('<li><button class="answer-btn">' + questions[counter].answers[i] + '</button></li>');
-      }
-
+      addQuestion();
+      addAnswers();
+      
       //changeImage();
 
       counter++;
@@ -73,6 +61,17 @@ $('#quiz-container').on('click','#submit-btn', function(event){
 
 });
 
+//Adds question to quiz
+function addQuestion(){
+  $('h3').append('<span id="question-color">Question ' + (counter + 1) + ':</span><span> ' + questions[counter].question + '</span');
+}
+
+//Adds answer choices for current question
+function addAnswers(){
+  for(i = 0; i <= 3; i++){
+      $('#answer-list').append('<li><button class="answer-btn">' + questions[counter].answers[i] + '</button></li>');
+      }
+}
 
 //Conditional to check user's answer against the correct answer
 function checkAnswer() {
@@ -84,7 +83,7 @@ function checkAnswer() {
   }
 }
 
-
+//Loops through and changes images according to question status: wrong, correct, current or unanswered
 function changeImage() {
   for(i = 0; i < questions.length; i++){
     if(i === counter) {
@@ -98,7 +97,6 @@ function changeImage() {
     }
     }
   }
-
 
 /*--------------Audio files------------*/
 
