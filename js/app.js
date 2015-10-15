@@ -2,78 +2,102 @@ $(document).ready(function(){
 
 var userAnswer;
 var counter = 0;
-var correctAnswer = questions[counter].correctAnswer;
+var correctAnswer;
 var totQuestions = 5;
-var numCorrect =  0;
-
-
+var numCorrect = 0;
 
 
 /*--Hides and shows elements for transition from landing content to quiz start content after clicking get started button--*/
 $('#start-btn').on('click', function(){
-  /*--------Hidden elements-----*/
-  $(this).parent('#quiz-container').prev().children('h1').hide();
-  $(this).siblings('h2').hide();
-  $(this).hide();
+   /*------Hides landing elements when user starts quiz-------*/ 
+    $('h1').hide();
+    $('#quiz-container').children('h2').hide();
+    $('#start-btn').hide();
+    
+    /*----Shows quiz elements on start-----*/
+    $('#quiz-container').children('h3').show();
+    $('#quiz-container').children('ul').show();
+    $('#submit-btn').show();
+    $('#header').children('h2').show();
+    $('#header').children('.progress-icons').show();
+    $('.main').css('padding-bottom', '3em');
 
-  /*------Show Elements-----*/
-  $(this).siblings('h3').show();
-  $(this).siblings('ul').show();
-  $(this).prev().show();
-  $(this).parent().prev().children('h2').show();
-  $(this).parent().prev().children('.progress-icons').show();
+    //Adds first quiz question
+    $('#quiz-container').children('h3').append('<span id="remove"> ' + questions[0].question + '</span');
+    
+    //Adds first set of answer choices
+    for(i = 0; i <= 3; i++){
+    $('#quiz-container').children('ul').append('<li><button class="answer-btn">' + questions[0].answers[i] + '</button></li>');
+    }
+    
+  //changeImage();
 
-  $(this).parent().parent().css('padding-bottom', '3em');
-
-  $(this).parent().children('h3').append('<span id="remove"> ' + questions[0].question + '</span');
-
-  /*------Adds first question answers to quiz-------*/
-  for(i = 0; i <= 3; i++){
-    $(this).prev().prev().append('<li><button class="answer-btn">' + questions[0].answers[i] + '</button></li>');
-  }
-
-  return counter++;
-
-  audio.door();
+  //audio.door();
     
 });
 
 /*----------------------Stores user answer selection----------------*/
-$('#answer-list').on('click', 'button', function(event){
-    event.preventDefault();
+$('#answer-list').on('click', 'button', function(){
     userAnswer = $(this).text();
-    $('#answer-btn').toggleClass('yellow');
+    $(this).toggleClass('yellow');
     console.log(userAnswer);
+    correctAnswer = questions[counter].correctAnswer;
     checkAnswer();
     return userAnswer;
+
+    
 });
 
-/*-------------------Checks if user answer is correct--------------------------*/
+ 
+/*-------Checks if quiz is finished, removes previous question, adds next question on submit----------*/
+$('#quiz-container').on('click','#submit-btn', function(event){
+    event.preventDefault();
+   
+   if(counter === questions.length) {
+      console.log('End of quiz');
+     }
+   else{
+      $('#answer-list').children().remove();
+      $('h3').children().remove();
+      $('h3').append('<span id="question-color">Question ' + (counter + 1) + ':</span><span> ' + questions[counter].question + '</span');
+
+      for(i = 0; i <= 3; i++){
+      $('#answer-list').append('<li><button class="answer-btn">' + questions[counter].answers[i] + '</button></li>');
+      }
+
+      //changeImage();
+
+      counter++;
+  
+    }
+
+});
+
+
+//Conditional to check user's answer against the correct answer
 function checkAnswer() {
   if(userAnswer === correctAnswer) {
-    console.log('correct');
+    console.log('Correct');
   }
   else{
     console.log('wrong');
   }
 }
-  
 
- 
-/*-------Remove landing page elements and adds first question/answers----------*/
-$('#submit-btn').on('click', function(){
-  
 
-  $(this).prev().children().remove();
-  $(this).prev().prev().children().remove();
-  $(this).prev().prev().append('<span id="question-color">Question ' + (counter + 1) + ':</span><span> ' + questions[counter].question + '</span');
-
-  for(i = 0; i <= 3; i++){
-    $(this).prev().append('<li><button class="answer-btn">' + questions[0].answers[i] + '</button></li>');
+function changeImage() {
+  for(i = 0; i < questions.length; i++){
+    if(i === counter) {
+      $('#image-' + (i + 1)).attr('src', 'images/pumpkin-q' + (i + 1) + '.png');
+    }
+    else if(questions[i].userAnswer === null){
+      $('#image-' + (i + 1)).attr('src', 'images/pumpkin-q' + (i + 1) + '-black.png');
+    }
+    else {
+      $('#image-' + (i + 1)).attr('src', 'images/pumpkin-q' + (i + 1) + '-' + questions[i].userAnswer + '.png');
+    }
+    }
   }
-
-  return counter++;
-});
 
 
 /*--------------Audio files------------*/
@@ -91,7 +115,7 @@ var audio = {
     }
 };
 
-audio.greeting();
+//audio.greeting();
 
 
 });

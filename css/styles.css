@@ -113,7 +113,7 @@ input[type = "submit"]:focus {
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: #C9BD1E !important;
 }
 
 

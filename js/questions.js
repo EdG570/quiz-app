@@ -4,6 +4,7 @@ function Question(question, answers, correctAnswer, funFact){
   this.answers = answers;
   this.correctAnswer = correctAnswer;
   this.funFact = funFact;
+  this.userAnswer = null;
 }
 
 Question.prototype.sayQuestionAnswers = function(){
