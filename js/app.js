@@ -1,8 +1,11 @@
 $(document).ready(function(){
 
 var userAnswer;
-var correctAnswer = questionOne.correctAnswer;
-var counter = 1;
+var counter = 0;
+var correctAnswer = questions[counter].correctAnswer;
+var totQuestions = 5;
+var numCorrect =  0;
+
 
 
 
@@ -12,7 +15,6 @@ $('#start-btn').on('click', function(){
   $(this).parent('#quiz-container').prev().children('h1').hide();
   $(this).siblings('h2').hide();
   $(this).hide();
-
 
   /*------Show Elements-----*/
   $(this).siblings('h3').show();
@@ -29,12 +31,36 @@ $('#start-btn').on('click', function(){
   for(i = 0; i <= 3; i++){
     $(this).prev().prev().append('<li><button class="answer-btn">' + questions[0].answers[i] + '</button></li>');
   }
+
+  return counter++;
+
+  audio.door();
     
 });
 
+/*----------------------Stores user answer selection----------------*/
+$('#answer-list').on('click', 'button', function(event){
+    event.preventDefault();
+    userAnswer = $(this).text();
+    $('#answer-btn').toggleClass('yellow');
+    console.log(userAnswer);
+    checkAnswer();
+    return userAnswer;
+});
+
+/*-------------------Checks if user answer is correct--------------------------*/
+function checkAnswer() {
+  if(userAnswer === correctAnswer) {
+    console.log('correct');
+  }
+  else{
+    console.log('wrong');
+  }
+}
+  
+
  
-/*-------On submit answer is stored in array and current answers/question
-          are removed and next question/answers are added----------*/
+/*-------Remove landing page elements and adds first question/answers----------*/
 $('#submit-btn').on('click', function(){
   
 
@@ -46,12 +72,8 @@ $('#submit-btn').on('click', function(){
     $(this).prev().append('<li><button class="answer-btn">' + questions[0].answers[i] + '</button></li>');
   }
 
-  audio.door();
-
   return counter++;
 });
-
-
 
 
 /*--------------Audio files------------*/

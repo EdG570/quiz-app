@@ -112,6 +112,10 @@ input[type = "submit"]:focus {
   list-style: none;
 }
 
+.yellow {
+  background-color: yellow;
+}
+
 
 /*-----Quiz start header section---------*/
 
