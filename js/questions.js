@@ -1,10 +1,11 @@
 /*--------Object constructor for questions,answers, and fun facts-----*/
-function Question(question, answers, correctAnswer, funFact){
+function Question(question, answers, correctAnswer, funFact, image){
   this.question = question;
   this.answers = answers;
   this.correctAnswer = correctAnswer;
   this.funFact = funFact;
   this.userAnswer = null;
+  this.image = image;
 }
 
 Question.prototype.sayQuestionAnswers = function(){
@@ -15,12 +16,12 @@ Question.prototype.sayQuestionAnswers = function(){
 
 var questionOne = new Question('Béla Lugosi was a Hungarian/American actor best known for his portrayal of what monster? ',
  ['Dracula', 'Werewolf', 'Frankenstein', 'Alien'], 'Dracula', 
- "Béla Ferenc Dezso Blaskó, better known as Béla Lugosi, was best known for his portrayal of Count Dracula in the American Broadway stage production, and subsequent film, of Bram Stoker's classic vampire story.");
+ "Béla Ferenc Dezso Blaskó, better known as Béla Lugosi, was best known for his portrayal of Count Dracula in the American Broadway stage production, and subsequent film, of Bram Stoker's classic vampire story.", '../images/bela.gif');
 
 
 
 var questionTwo = new Question('Movies also teach us that if your son warns of "redrum" you better distance yourself from your spouse pronto. But in "The Shining" all the husband is worried about is what? ',
- ['Playing too hard', 'Becoming a murderer', 'Working too hard', 'Being murdered'], 'Working too hard', '"All work and no play makes Jack a dull boy" -- or, rather, a homicidal boy in Stanley Kubricks eerie 1980 adaptation of Stephen Kings horror novel');
+ ['Playing too hard', 'Becoming a murderer', 'Working too hard', 'Being murdered'], 'Working too hard', '"All work and no play makes Jack a dull boy" -- or, rather, a homicidal boy in Stanley Kubricks eerie 1980 adaptation of Stephen Kings horror novel', '../images/shining.jpg');
 
 
 

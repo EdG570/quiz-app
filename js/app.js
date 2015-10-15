@@ -37,7 +37,7 @@ $('#answer-list').on('click', 'button', function(){
     $(this).toggleClass('yellow');
     console.log(userAnswer);
     correctAnswer = questions[counter].correctAnswer;
-    checkAnswer();
+    return userAnswer;
 });
 
 /*-------Checks if quiz is finished, removes previous question, adds next question on submit----------*/
@@ -48,8 +48,7 @@ $('#quiz-container').on('click','#submit-btn', function(event){
       console.log('End of quiz');
      }
    else{
-      $('#answer-list').children().remove();
-      $('h3').children().remove();
+      checkAnswer();
       addQuestion();
       addAnswers();
       
@@ -58,8 +57,27 @@ $('#quiz-container').on('click','#submit-btn', function(event){
       counter++;
   
     }
-
 });
+
+$('#feedback').on('click', '#next-btn', function(){
+    $('#feedback').children().slice(1).remove();
+    $('#feedback').hide();
+    showQuiz();
+    removeQuestion();
+    addQuestion();
+    addAnswers();
+});
+
+//Hides quiz elements for feedback
+function hideQuiz() {
+  $('#quiz-container').hide();
+  $('#header').hide();
+}
+
+function showQuiz(){
+  $('#quiz-container').show();
+  $('#header').show();
+}
 
 //Adds question to quiz
 function addQuestion(){
@@ -73,13 +91,29 @@ function addAnswers(){
       }
 }
 
+function removeQuestion() {
+  $('#answer-list').children().remove();
+      $('h3').children().remove();
+}
+
 //Conditional to check user's answer against the correct answer
 function checkAnswer() {
+  hideQuiz();
+
   if(userAnswer === correctAnswer) {
-    console.log('Correct');
+    $('#feedback').append('<h1>Correct!</h1>');
+    $('#feedback').attr('src', questions[counter].image);
+    $('#feedback').append('<h2>' + questions[counter].funFact + '</h2>');
+    $('#feedback').append('<button id="next-btn">Next</button>');
+    $('#feedback').show();
+
   }
   else{
-    console.log('wrong');
+    $('#feedback').append('<h1><span>Incorrect</span></h1>');
+    $('#feedback').attr('src', questions[counter].image);
+    $('#feedback').append('<h2>' + questions[counter].funFact + '</h2>');
+    $('#feedback').append('<button id="next-btn">Next</button>');
+    $('#feedback').show();
   }
 }
 
@@ -97,6 +131,7 @@ function changeImage() {
     }
     }
   }
+
 
 /*--------------Audio files------------*/
 
