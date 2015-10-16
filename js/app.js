@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-var userAnswer;
+
 var counter = 0;
 var correctAnswer;
 var numQuestions = 5;
@@ -36,6 +36,7 @@ $('#answer-list').on('click', 'button', function(){
     $(this).toggleClass('yellow');
     console.log(userAnswer);
     correctAnswer = questions[counter].correctAnswer;
+    questions[counter].userAnswer = userAnswer;
     return userAnswer;
 });
 
@@ -48,9 +49,9 @@ $('#quiz-container').on('click','#submit-btn', function(event){
      }
    else{
       checkAnswer();
-
       counter++;
       changeImage();
+      
     }
 });
 
@@ -96,9 +97,17 @@ $('#feedback').on('click', '#retry-btn', function(event){
     removeQuestion();
     addQuestion();
     addAnswers();
-    audio.stop();
+    clearUserAnswers();
+    changeImage();
     audio.door();   
 });
+
+//Clears user answers on restart
+function clearUserAnswers() {
+  for(i = 0; i < questions.length; i++) {
+    questions[i].userAnswer = null;
+  }
+}
 
 //Hides quiz elements
 function hideQuiz() {
@@ -106,13 +115,13 @@ function hideQuiz() {
   $('#header').hide();
 }
 //Shows quiz elements
-function showQuiz(){
+function showQuiz() {
   $('#quiz-container').show();
   $('#header').show();
 }
 
 //Adds question to quiz
-function addQuestion(){
+function addQuestion() {
   $('h3').append('<span id="question-color">Question ' + (counter + 1) + ':</span><span> ' + questions[counter].question + '</span');
 }
 
@@ -171,7 +180,7 @@ function changeImage() {
     else if(questions[i].userAnswer === null){
       $('#image-' + (i + 1)).attr('src', 'images/pumpkin-q' + (i + 1) + '-black.png');
     }
-    else if(questions[i].userAnswer === correctAnswer){
+    else if(questions[i].userAnswer === questions[i].correctAnswer){
       $('#image-' + (i + 1)).attr('src', 'images/pumpkin-q' + (i + 1) + '-correct.png');
     }
     else{
