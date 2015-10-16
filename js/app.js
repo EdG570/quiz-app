@@ -60,15 +60,19 @@ $('#feedback').on('click', '#next-btn', function(){
     var score = (numCorrect / numQuestions) * 100;
     if(numCorrect === numQuestions ) {
         showResults();
+        audio.monster();
       }
     else if(counter === 5 && score === 0) {
         showResults();
+        audio.monster();
     }
     else if(counter === 5 && score >= 60){
         showResults();
+        audio.monster();
     }
     else if(counter === 5 && score > 0){
         showResults();
+        audio.monster();
     }
     else {
         $('#feedback').children().slice(1).remove();
