@@ -58,43 +58,19 @@ $('#quiz-container').on('click','#submit-btn', function(event){
 $('#feedback').on('click', '#next-btn', function(){
     var score = (numCorrect / numQuestions) * 100;
     if(numCorrect === numQuestions ) {
-        $('#feedback').children().slice(1).remove();
-        $('#feedback').append('<h2 id="congrats-2">Congratulations on finishing the <span id="congrats">Halloween Movie Quiz!</span> Impressive!</h2>');
-        $('#feedback').append('<h2 id="score-intro">Your score is:</h2>');
-        $('#feedback').append('<h1 id="score">' + score + '%</h1>');
-        $('#answer-image').attr('src', 'images/clowns.gif');
-        $('#feedback').append('<button id="retry-btn">Retry</button>');
-        $('#feedback').show();
+        showResults();
         audio.monster();
       }
     else if(counter === 5 && score === 0) {
-        $('#feedback').children().slice(1).remove();
-        $('#feedback').append('<h2 id="congrats-2">Congratulations on finishing the <span id="congrats">Halloween Movie Quiz!</span> Was your mouse broken?</h2>');
-        $('#feedback').append('<h2 id="score-intro">Your score is:</h2>');
-        $('#feedback').append('<h1 id="score">' + score + '%</h1>');
-        $('#answer-image').attr('src', 'images/clowns.gif');
-        $('#feedback').append('<button id="retry-btn">Retry</button>');
-        $('#feedback').show();
+        showResults();
         audio.monster();
     }
     else if(counter === 5 && score >= 60){
-        $('#feedback').children().slice(1).remove();
-        $('#feedback').append('<h2 id="congrats-2">Congratulations on finishing the <span id="congrats">Halloween Movie Quiz!</span> Ghoulish performance, indeed!</h2>');
-        $('#feedback').append('<h2 id="score-intro">Your score is:</h2>');
-        $('#feedback').append('<h1 id="score">' + score + '%</h1>');
-        $('#answer-image').attr('src', 'images/clowns.gif');
-        $('#feedback').append('<button id="retry-btn">Retry</button>');
-        $('#feedback').show();
+        showResults();
         audio.monster();
     }
     else if(counter === 5 && score > 0){
-        $('#feedback').children().slice(1).remove();
-        $('#feedback').append('<h2 id="congrats-2">Congratulations on finishing the <span id="congrats">Halloween Movie Quiz!</span></h2>');
-        $('#feedback').append('<h2 id="score-intro">Your score is:</h2>');
-        $('#feedback').append('<h1 id="score">' + score + '%</h1>');
-        $('#answer-image').attr('src', 'images/clowns.gif');
-        $('#feedback').append('<button id="retry-btn">Retry</button>');
-        $('#feedback').show();
+        showResults();
         audio.monster();
     }
     else {
@@ -111,15 +87,25 @@ $('#feedback').on('click', '#next-btn', function(){
 
 $('#feedback').on('click', '#retry-btn', function(event){
     event.preventDefault;
-    
+
+    counter = 0;
+    numCorrect = 0;
+    $('#feedback').children().slice(1).remove();
+    $('#feedback').hide();
+    showQuiz();
+    removeQuestion();
+    addQuestion();
+    addAnswers();
+    audio.stop();
+    audio.door();   
 });
 
-//Hides quiz elements for feedback
+//Hides quiz elements
 function hideQuiz() {
   $('#quiz-container').hide();
   $('#header').hide();
 }
-
+//Shows quiz elements
 function showQuiz(){
   $('#quiz-container').show();
   $('#header').show();
@@ -137,9 +123,10 @@ function addAnswers(){
       }
 }
 
+//Removes current question and answers
 function removeQuestion() {
   $('#answer-list').children().remove();
-      $('h3').children().remove();
+  $('h3').children().remove();
 }
 
 //Conditional to check user's answer against the correct answer
@@ -161,6 +148,18 @@ function checkAnswer() {
     $('#feedback').append('<button id="next-btn">Next</button>');
     $('#feedback').show();
   }
+}
+
+//Gives user feedback at quiz completion
+function showResults() {
+  var score = (numCorrect / numQuestions) * 100;
+  $('#feedback').children().slice(1).remove();
+  $('#feedback').append('<h2 id="congrats-2">Congratulations on finishing the <span id="congrats">Halloween Movie Quiz!</span></h2>');
+  $('#feedback').append('<h2 id="score-intro">Your score is:</h2>');
+  $('#feedback').append('<h1 id="score">' + score + '%</h1>');
+  $('#answer-image').attr('src', 'images/clowns.gif');
+  $('#feedback').append('<button id="retry-btn">Retry</button>');
+  $('#feedback').show();
 }
 
 //Loops through and changes images according to question status: wrong, correct, current or unanswered
@@ -199,6 +198,9 @@ var audio = {
           $('#monster')[0].volume=0.5;
           $('#monster')[0].load();
           $('#monster')[0].play();
+    },
+    stop:function() {
+          $('#monster')[0].stop();
     }
 };
 

@@ -33,9 +33,6 @@ button:focus {
   outline:0;
 }
 
-input[type = "submit"]:focus {
-  outline: 0 !important;
-}
 
 /*---------Quiz Container Initial------------*/
 
@@ -202,6 +199,7 @@ input[type = "submit"]:focus {
   padding: 0.75em 3.25em;
   margin-top: 2em;
   border-radius: 5px;
+  border: none;
 }
 
 #feedback > #score {
