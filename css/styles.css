@@ -183,6 +183,7 @@ button:focus {
   width: 22em;
   margin: 0 auto;
   border-radius: 5px;
+  border: 1px solid #fff;
 }
 
 #next-btn {
