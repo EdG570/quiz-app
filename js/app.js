@@ -33,11 +33,13 @@ $('#start-btn').on('click', function(){
 /*----------------------Stores user answer selection----------------*/
 $('#answer-list').on('click', 'button', function(){
     userAnswer = $(this).text();
+    $('.answer-btn').removeClass('yellow');
     $(this).toggleClass('yellow');
     console.log(userAnswer);
     correctAnswer = questions[counter].correctAnswer;
     questions[counter].userAnswer = userAnswer;
     return userAnswer;
+
 });
 
 /*-------Checks if quiz is finished, removes previous question, adds next question on submit----------*/
