@@ -99,6 +99,7 @@ $('#feedback').on('click', '#retry-btn', function(event){
     addAnswers();
     clearUserAnswers();
     changeImage();
+    $('#monster')[0].pause();
     audio.door();   
 });
 
