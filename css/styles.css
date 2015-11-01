@@ -231,6 +231,108 @@ button:focus {
 }
 
 
+/*--------------------MEDIA QUERIES------------------------*/
+
+@media only screen and (max-width: 865px){
+  #feedback {
+    width: 85%;
+    padding: 5%;  
+ }      
+}
+
+@media only screen and (max-width: 800px) {
+  #quiz-container {
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  #header > h1 {
+    font-size: 3em;
+  }
+
+  #feedback > h2 { 
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .pumpkin-img {
+    width: 3em;
+  }
+
+  #header > .progress-icons {
+    list-style: none;
+    width: 65%;
+  }
+
+  #header > .progress-icons > li {
+    margin-right: 1em;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #header > .progress-icons {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 475px) {
+  #header > h1 {
+    font-size: 2.5em;
+    margin-top: 2em;
+  }
+
+  #quiz-container > h2 {
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 1.3em;
+    margin-top: 0;
+  }
+
+  #quiz-container {
+    padding: 2em 1em;
+  }
+
+  .button {
+    padding: 0.25em 1em;
+    border-radius: 5px;
+    font-size: 1em;
+  }
+
+  #header > .progress-icons {
+    width: 75%;
+  }
+
+  #feedback > h2 {
+    font-size: 1.2em;
+  }
+
+}
+
+@media only screen and (max-width: 435px) {
+  #header > .progress-icons {
+    width: 80%;
+  }
+
+  #feedback > img {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 410px) {
+  #header > .progress-icons {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 385px) {
+  #header > .progress-icons {
+    width: 90%;
+  }
+}
+
+
 
 
 
